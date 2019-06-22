@@ -1,12 +1,22 @@
+// Import the React and ReactDOM libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ChampionListing from './ChampionListing';
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+// Create a React component
+const App = function() {
+	return (
+		<div className="ui container comments">
+			<ChampionListing champion="Xerath" points="375,000" />
+			<ChampionListing champion="Jhin" points="72,000"/>
+			<ChampionListing champion="Alistar" points="0"/>
+		</div>
+	);
+};
+
+// Render the component
+ReactDOM.render(
+	<App />,
+	document.querySelector('#root')
+);
