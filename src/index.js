@@ -2,15 +2,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ChampionListing from './ChampionListing';
+import SummonerSplash from "./SummonerSplash";
+import Table from "./Table";
 
 
 // Create a React component
 const App = function() {
 	return (
 		<div className="ui container comments">
-			<ChampionListing champion="Xerath" points="375,000" />
-			<ChampionListing champion="Jhin" points="72,000"/>
-			<ChampionListing champion="Alistar" points="0"/>
+			<SummonerSplash username="VictoryLeech" level="150"/>
+			<Table>
+				<ChampionListing champion="Xerath" points="375,000" />
+				<ChampionListing champion="Jhin" points="72,000"/>
+				<ChampionListing champion="Alistar" points="0"/>
+			</Table>
 		</div>
 	);
 };
