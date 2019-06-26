@@ -1,0 +1,25 @@
+.champ-item {
+    position: relative;
+    margin: 0.5em 0 0;
+}
+
+.champ-item .icon {
+    margin-right: 1em;
+    float: left;
+}
+
+.champ-item .icon img {
+    height: 4.5rem;
+    width: auto;
+}
+
+.champ-item .content .name {
+    font-weight: bold;
+    margin-right: 1em;
+}
+
+.champ-item .content .level {
+    color: grey;
+}
+
+.champ-item .content .points {}

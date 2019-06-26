@@ -11,7 +11,7 @@ const ChampionListing = function(props) {
 			<div className="content">
 				<a href="/" className="author">{props.champion}</a>
 				<div className="metadata">
-					<span className="date">Mastery 7</span>
+					<span className="date">Mastery {props.level}</span>
 				</div>
 				<div className="text">{props.points} Mastery Points</div>
 			</div>
