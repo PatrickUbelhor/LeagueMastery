@@ -1,16 +1,17 @@
+import './SummonerSplash.css';
 import React from 'react';
 
 const SummonerSplash = function(props) {
 
 	return (
-		<div>
-			<a href="/">
-				<img src="Xerath-icon.png" alt="SummonerIcon" />
-			</a>
-			<div>
-				<div>{props.region}</div>
-				<div>{props.username}</div>
-				<div>{"Level " + props.level}</div>
+		<div className="summoner">
+			<img src="Xerath-icon.png" alt="SummonerIcon" />
+			<div className="side-info">
+				<div className="name">{props.username}</div>
+				<div className="level">{"Level " + props.level}</div>
+			</div>
+			<div className="below">
+				<span className="region">{props.region}</span>
 			</div>
 		</div>
 	);

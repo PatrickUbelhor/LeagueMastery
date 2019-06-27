@@ -6,9 +6,7 @@ const ChampionItem = function(props) {
 
 	return (
 		<div className="champ-item">
-			<span className="icon">
-				<img src={icon} alt="avatar" />
-			</span>
+			<img src={icon} alt="avatar" />
 			<div className="content">
 				<span className="name">{props.champion}</span>
 				<span className="level">Mastery {props.level}</span>

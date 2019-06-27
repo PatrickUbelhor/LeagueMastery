@@ -3,23 +3,34 @@
     margin: 0.5em 0 0;
 }
 
-.champ-item .icon {
+.champ-item img {
+    height: 4em;
+    width: auto;
+    vertical-align: middle; /* Removes line-height space below */
     margin-right: 1em;
-    float: left;
 }
 
-.champ-item .icon img {
-    height: 4.5rem;
-    width: auto;
+.champ-item .content {
+    position: absolute;
+    height: 100%;
+    /*width: 100%;*/
+    /*vertical-align: top;*/
+    font-size: 1.2em;
+    padding-top: 0.1em;
 }
 
 .champ-item .content .name {
     font-weight: bold;
-    margin-right: 1em;
+    margin-right: 0.6em;
 }
 
 .champ-item .content .level {
-    color: grey;
+    font-size: 0.8em;
+    font-weight: lighter;
+    color: darkgray;
 }
 
-.champ-item .content .points {}
+.champ-item .content .points {
+    vertical-align: bottom;
+    margin-top: 0.2em;
+}
