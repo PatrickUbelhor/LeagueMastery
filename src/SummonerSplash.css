@@ -24,8 +24,7 @@
 }
 
 .summoner .below .region {
-    color: white;
-    background-color: darkslategrey;
+    background-color: cadetblue;
     border-radius: 4px;
     padding: 0.1em 0.25em;
 }

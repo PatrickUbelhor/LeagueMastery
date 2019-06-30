@@ -1,0 +1,21 @@
+.container {
+	height: 3em;
+	background-color: cadetblue;
+	padding-left: 1em;
+	padding-right: 3em;
+	margin-bottom: 1em;
+	align-items: center;
+}
+
+.container .title {
+	margin: auto 0;
+	height: auto;
+	font-size: 1.6em;
+}
+
+.container .searchBox {
+	width: 20em;
+	float: right;
+	border-radius: 0.5em;
+	padding: 0.25em 0.4em;
+}

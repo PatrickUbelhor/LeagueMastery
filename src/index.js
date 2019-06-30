@@ -1,7 +1,8 @@
 // Import the React and ReactDOM libraries
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ChampionItem from './ChampionItem'
+import ChampionItem from './ChampionItem';
+import Header from './Header';
 import SummonerSplash from "./SummonerSplash";
 import Table from "./Table";
 
@@ -24,6 +25,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
+				<Header/>
 				<SummonerSplash region={this.state.region} username={this.state.username} level={this.state.level}/>
 				<Table>
 					<ChampionItem champion="Xerath" level="7" points="375,000"/>
