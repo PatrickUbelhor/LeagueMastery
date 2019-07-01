@@ -1,4 +1,5 @@
 // Import the React and ReactDOM libraries
+import Axios from 'axios'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ChampionItem from './ChampionItem';
@@ -22,7 +23,15 @@ class App extends React.Component {
 		};
 	}
 
+	async getSummoner(name) {
+		const result = await Axios.get("http://localhost:3001/api/summoner/by-name/" + name);
+
+		return result.data;
+	}
+
 	render() {
+		this.getSummoner("VictoryLeech");
+
 		return (
 			<div>
 				<Header/>

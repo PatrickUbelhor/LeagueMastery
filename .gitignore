@@ -5,6 +5,7 @@
 
 # Server
 /server/.gradle
+/server/build
 application.yaml
 
 # React dependencies
