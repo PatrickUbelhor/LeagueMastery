@@ -19,7 +19,8 @@ class App extends React.Component {
 		this.state = {
 			region: "NA",
 			username: "VictoryLeech",
-			level: "150"
+			level: "150",
+			summonerId: null
 		};
 
 		this.getSummoner = this.getSummoner.bind(this);
@@ -28,10 +29,13 @@ class App extends React.Component {
 	async getSummoner() {
 		const result = await Axios.get("http://localhost:3001/api/summoner/by-name/VictoryLeech");
 
+		// TODO: Get summoner's masteries here
+
 		this.setState((state, props) => {
 			return {
 				username: result.data.name,
-				level: result.data.summonerLevel
+				level: result.data.summonerLevel,
+				summonerId: result.data.summonerId
 			};
 		});
 

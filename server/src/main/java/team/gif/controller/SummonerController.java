@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import team.gif.service.SummonerService;
 
-import java.io.IOException;
 import java.net.URISyntaxException;
 
 @RestController
