@@ -1,4 +1,8 @@
-#### **Architecture:**
+# League Mastery
+A web app for League of Legends that gives players statistics
+about their mastery points on each champion.
+
+## Architecture:
 
 The frontend uses the [React](https://reactjs.org/) framework to display the data.
 The frontend communicates with an intermediate Java [Spring Boot](https://spring.io/projects/spring-boot)
@@ -17,7 +21,7 @@ Contains the web app for viewing statistics related to champion mastery.
 Contains the server used to communicate between the web app and the Riot Games API.
 
 
-#### Deployment:
+## Deployment:
 
 Currently, the webapp and server must be deployed separately.
 This means they must be given their own ports.
