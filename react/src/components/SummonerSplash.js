@@ -1,4 +1,4 @@
-import './SummonerSplash.css';
+import '../css/SummonerSplash.css';
 import React from 'react';
 
 const SummonerSplash = function(props) {

@@ -1,4 +1,4 @@
-import './Header.css';
+import '../css/Header.css';
 import React from 'react';
 
 const Header = function(props) {

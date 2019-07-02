@@ -1,11 +1,11 @@
 // Import the React and ReactDOM libraries
-import Axios from 'axios'
+import riot from './api/Riot';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ChampionItem from './ChampionItem';
-import Header from './Header';
-import SummonerSplash from "./SummonerSplash";
-import Table from "./Table";
+import ChampionItem from './components/ChampionItem';
+import Header from './components/Header';
+import SummonerSplash from "./components/SummonerSplash";
+import Table from "./components/Table";
 
 
 // Create a React component
@@ -22,12 +22,10 @@ class App extends React.Component {
 			level: "150",
 			summonerId: null
 		};
-
-		this.getSummoner = this.getSummoner.bind(this);
 	}
 
-	async getSummoner() {
-		const result = await Axios.get("http://localhost:3001/api/summoner/by-name/VictoryLeech");
+	getSummoner = async () => {
+		const result = await riot.get("/summoner/by-name/VictoryLeech");
 
 		// TODO: Get summoner's masteries here
 
@@ -40,7 +38,7 @@ class App extends React.Component {
 		});
 
 		console.log(result.data);
-	}
+	};
 
 	render() {
 		return (

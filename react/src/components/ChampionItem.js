@@ -1,4 +1,4 @@
-import './ChampionItem.css'
+import '../css/ChampionItem.css'
 import React from 'react';
 
 const ChampionItem = function(props) {
