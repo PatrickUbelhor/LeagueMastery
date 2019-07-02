@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import team.gif.service.SummonerService;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 @RestController
 @RequestMapping(value = "/api/summoner", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -21,10 +22,8 @@ public class SummonerController {
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/by-name/{name}")
-	ResponseEntity<String> getSummonerByName(@PathVariable String name) throws IOException, InterruptedException {
-		String summoner = summonerService.getSummonerByName(name);
-		
-		return ResponseEntity.ok(summoner);
+	ResponseEntity<String> getSummonerByName(@PathVariable String name) throws URISyntaxException {
+		return summonerService.getSummonerByName(name);
 	}
 	
 }
