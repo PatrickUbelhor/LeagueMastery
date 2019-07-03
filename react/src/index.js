@@ -1,12 +1,18 @@
-// Import the React and ReactDOM libraries
 import riot from './api/Riot';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ChampionItem from './components/ChampionItem';
 import Header from './components/Header';
 import SummonerSplash from "./components/SummonerSplash";
 import Table from "./components/Table";
 
+
+const conversion = {
+	101: "Xerath",
+	222: "Jinx",
+	268: "Azir",
+	51: "Caitlyn",
+	111: "Malphite"
+};
 
 // Create a React component
 class App extends React.Component {
@@ -20,24 +26,41 @@ class App extends React.Component {
 			region: "NA",
 			username: "VictoryLeech",
 			level: "150",
-			summonerId: null
+			summonerId: null,
+			masteries: []
 		};
 	}
 
-	getSummoner = async () => {
-		const result = await riot.get("/summoner/by-name/VictoryLeech");
+	nameMastery = (mastery, name) => {
+		return {
+			name: name,
+			level: mastery.championLevel,
+			points: mastery.championPoints
+		}
+	};
 
-		// TODO: Get summoner's masteries here
+	getSummoner = async () => {
+		const summoner = (await riot.get("/summoner/by-name/VictoryLeech")).data;
+		let masteries = (await riot.get("/mastery/by-summoner/" + summoner.id)).data;
+
+		// TODO: In Type
+		// masteries = masteries.map(mastery => mastery + {championName: "Xerath"});
+
+		let namedMasteries = [];
+		for (let mastery in masteries) {
+			namedMasteries.push(this.nameMastery(mastery, "Xerath"));
+		}
 
 		this.setState((state, props) => {
 			return {
-				username: result.data.name,
-				level: result.data.summonerLevel,
-				summonerId: result.data.summonerId
+				username: summoner.name,
+				level: summoner.summonerLevel,
+				summonerId: summoner.id,
+				masteries: namedMasteries
 			};
 		});
 
-		console.log(result.data);
+		console.log(summoner.data);
 	};
 
 	render() {
@@ -46,11 +69,7 @@ class App extends React.Component {
 				<Header/>
 				<SummonerSplash region={this.state.region} username={this.state.username} level={this.state.level}/>
 				<button onClick={this.getSummoner}>Load</button>
-				<Table>
-					<ChampionItem champion="Xerath" level="7" points="375,000"/>
-					<ChampionItem champion="Jhin" level="5" points="72,000"/>
-					<ChampionItem champion="Alistar" level="1" points="0"/>
-				</Table>
+				<Table masteries={this.state.masteries}/>
 			</div>
 		);
 	}
