@@ -5,10 +5,10 @@ const SummonerSplash = function(props) {
 
 	return (
 		<div className="summoner">
-			<img src="Xerath-icon.png" alt="SummonerIcon" />
+			<img src={"summoner-icons/" + props.summoner.profileIconId + ".png"} alt="SummonerIcon" />
 			<div className="side-info">
-				<div className="name">{props.username}</div>
-				<div className="level">{"Level " + props.level}</div>
+				<div className="name">{props.summoner.name}</div>
+				<div className="level">{"Level " + props.summoner.summonerLevel}</div>
 			</div>
 			<div className="below">
 				<span className="region">{props.region}</span>

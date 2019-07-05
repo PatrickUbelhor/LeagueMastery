@@ -14,8 +14,8 @@ apply plugin: 'io.spring.dependency-management'
 group 'team.gif'
 version '1.0.0-SNAPSHOT'
 
-sourceCompatibility = 1.11
-targetCompatibility = 1.11
+sourceCompatibility = 1.12
+targetCompatibility = 1.12
 
 repositories {
     mavenCentral()

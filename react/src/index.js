@@ -1,3 +1,5 @@
+
+import z from './api/ChampionIds';
 import riot from './api/Riot';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -5,14 +7,6 @@ import Header from './components/Header';
 import SummonerSplash from "./components/SummonerSplash";
 import Table from "./components/Table";
 
-
-const conversion = {
-	101: "Xerath",
-	222: "Jinx",
-	268: "Azir",
-	51: "Caitlyn",
-	111: "Malphite"
-};
 
 // Create a React component
 class App extends React.Component {
@@ -24,9 +18,7 @@ class App extends React.Component {
 		// Every time state gets changed, render() is called again
 		this.state = {
 			region: "NA",
-			username: "VictoryLeech",
-			level: "150",
-			summonerId: null,
+			summoner: {},
 			masteries: []
 		};
 	}
@@ -43,33 +35,25 @@ class App extends React.Component {
 		const summoner = (await riot.get("/summoner/by-name/VictoryLeech")).data;
 		let masteries = (await riot.get("/mastery/by-summoner/" + summoner.id)).data;
 
-		// TODO: In Type
-		// masteries = masteries.map(mastery => mastery + {championName: "Xerath"});
-
-		let namedMasteries = [];
-		for (let mastery in masteries) {
-			namedMasteries.push(this.nameMastery(mastery, "Xerath"));
-		}
+		masteries = masteries.map(mastery => this.nameMastery(mastery, z[mastery.championId]));
 
 		this.setState((state, props) => {
 			return {
-				username: summoner.name,
-				level: summoner.summonerLevel,
-				summonerId: summoner.id,
-				masteries: namedMasteries
+				summoner: summoner,
+				masteries: masteries
 			};
 		});
 
-		console.log(summoner.data);
+		console.log(summoner);
 	};
 
 	render() {
 		return (
 			<div>
 				<Header/>
-				<SummonerSplash region={this.state.region} username={this.state.username} level={this.state.level}/>
+				<SummonerSplash summoner={this.state.summoner} region={this.state.region} />
 				<button onClick={this.getSummoner}>Load</button>
-				<Table masteries={this.state.masteries}/>
+				<Table masteries={this.state.masteries} />
 			</div>
 		);
 	}
