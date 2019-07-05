@@ -6,7 +6,7 @@ const Table = (props) => {
 	console.log(props.masteries);
 
 	const entries = props.masteries.map((mastery) => {
-		return <ChampionItem champion={mastery.name} level={mastery.level} points={mastery.points} />
+		return <ChampionItem key={mastery.id} champion={mastery.name} level={mastery.level} points={mastery.points} />
 	});
 
 	return (

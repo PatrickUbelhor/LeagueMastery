@@ -1,5 +1,5 @@
 
-import z from './api/ChampionIds';
+import champIds from './api/ChampionIds';
 import riot from './api/Riot';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -25,6 +25,7 @@ class App extends React.Component {
 
 	nameMastery = (mastery, name) => {
 		return {
+		    id: mastery.championId,
 			name: name,
 			level: mastery.championLevel,
 			points: mastery.championPoints
@@ -35,7 +36,7 @@ class App extends React.Component {
 		const summoner = (await riot.get("/summoner/by-name/VictoryLeech")).data;
 		let masteries = (await riot.get("/mastery/by-summoner/" + summoner.id)).data;
 
-		masteries = masteries.map(mastery => this.nameMastery(mastery, z[mastery.championId]));
+		masteries = masteries.map(mastery => this.nameMastery(mastery, champIds[mastery.championId]));
 
 		this.setState((state, props) => {
 			return {
