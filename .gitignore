@@ -5,7 +5,6 @@
 
 # Images
 /react/public/champ-icons/*.png
-/react/public/summoner-icons/*.png
 
 # Server
 /server/.gradle
