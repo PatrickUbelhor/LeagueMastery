@@ -1,5 +1,6 @@
 import React from 'react';
 import ChampionItem from "./ChampionItem";
+import '../css/Table.css'
 
 const Table = (props) => {
 
@@ -8,7 +9,7 @@ const Table = (props) => {
 	});
 
 	return (
-		<div>
+		<div className="parent">
 			<h1>Champions:</h1>
 			{entries}
 		</div>
