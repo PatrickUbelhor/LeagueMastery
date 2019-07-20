@@ -5,7 +5,7 @@ import '../css/Table.css'
 const Table = (props) => {
 
 	const entries = props.masteries.map((mastery) => {
-		return <ChampionItem key={mastery.championId} champion={mastery.name} level={mastery.level} points={mastery.points} />
+		return <ChampionItem key={mastery.id} iconUrl={mastery.iconUrl} champion={mastery.name} level={mastery.level} points={mastery.points} />
 	});
 
 	return (

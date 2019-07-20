@@ -1,7 +1,6 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import champIds from './api/ChampionIds';
 import riot from './api/Riot';
 import Header from './components/Header';
 import SummonerSplash from "./components/SummonerSplash";
@@ -23,21 +22,9 @@ class App extends React.Component {
 		};
 	}
 
-	nameMastery = (mastery, name) => {
-		return {
-		    id: mastery.championId,
-			name: name,
-			championId: mastery.championId,
-			level: mastery.championLevel,
-			points: mastery.championPoints
-		}
-	};
-
 	getSummoner = async () => {
 		const summoner = (await riot.get("/summoner/by-name/VictoryLeech")).data;
 		let masteries = (await riot.get(`/mastery/by-summoner/${summoner.id}`)).data;
-
-		masteries = masteries.map(mastery => this.nameMastery(mastery, champIds[mastery.championId]));
 
 		this.setState((state, props) => {
 			return {

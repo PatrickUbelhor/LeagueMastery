@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import team.gif.model.Champion;
-import team.gif.model.ChampionList;
+import team.gif.model.riot.Champion;
+import team.gif.model.riot.ChampionList;
 import team.gif.service.StaticDataService;
 
 import java.net.URISyntaxException;
@@ -25,14 +25,14 @@ public class StaticDataController {
 	@CrossOrigin(origins = "*")
 	@GetMapping("/champions")
 	public ResponseEntity<ChampionList> getAllChampions() throws URISyntaxException {
-		return staticDataService.getChampionList();
+		return ResponseEntity.ok(staticDataService.getChampionList());
 	}
 	
 	
 	@CrossOrigin(origins = "*")
 	@GetMapping("/champions/{name}")
 	public ResponseEntity<Champion> getChampion(@PathVariable String name) throws URISyntaxException {
-		ChampionList list = staticDataService.getChampionList().getBody();
+		ChampionList list = staticDataService.getChampionList();
 		
 		Champion champ = list.getData().get(name);
 		
