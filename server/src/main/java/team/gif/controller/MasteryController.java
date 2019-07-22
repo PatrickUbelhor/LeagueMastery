@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import team.gif.model.ChampionProcessor;
+import team.gif.model.ParsedChampionList;
 import team.gif.model.MasteryListing;
 import team.gif.model.riot.Mastery;
 import team.gif.service.MasteryService;
@@ -23,27 +23,29 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/api/mastery", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MasteryController {
 	
-	@Autowired
-	private MasteryService masteryService;
+	private final MasteryService masteryService;
+	private final StaticDataService staticDataService;
 	
 	@Autowired
-	private StaticDataService staticDataService;
+	public MasteryController(MasteryService masteryService, StaticDataService staticDataService) {
+		this.masteryService = masteryService;
+		this.staticDataService = staticDataService;
+	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/by-summoner/{summonerId}")
 	public ResponseEntity<List<MasteryListing>> getMasteriesBySummoner(@PathVariable String summonerId) throws URISyntaxException {
-		staticDataService.updateChampionList();
 		Mastery[] masteries = masteryService.getMasteries(summonerId);
 		String version = staticDataService.getLatestVersionNumber();
 		
-		ChampionProcessor processor = ChampionProcessor.getInstance();
+		ParsedChampionList champions = staticDataService.getChampionList();
 		
 		List<MasteryListing> result;
 		result = Arrays.stream(masteries).parallel()
 				.map(mastery -> new MasteryListing(
 						mastery.getChampionId(),
-						"http://ddragon.leagueoflegends.com/cdn/" + version + "/img/champion/" + processor.getChampion(mastery.getChampionId()).getImage().getFull(),
-						processor.getChampion(mastery.getChampionId()).getName(),
+						"http://ddragon.leagueoflegends.com/cdn/" + version + "/img/champion/" + champions.getChampion(mastery.getChampionId()).getImage().getFull(),
+						champions.getChampion(mastery.getChampionId()).getName(),
 						mastery.getChampionLevel(),
 						mastery.getChampionPoints())
 				)
