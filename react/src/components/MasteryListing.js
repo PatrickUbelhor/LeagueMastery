@@ -1,7 +1,7 @@
-import '../css/ChampionItem.css'
+import '../css/MasteryListing.css'
 import React from 'react';
 
-const ChampionItem = function(props) {
+const MasteryListing = function(props) {
 
 	return (
 		<div className="champ-item">
@@ -15,4 +15,4 @@ const ChampionItem = function(props) {
 	);
 };
 
-export default ChampionItem;
+export default MasteryListing;

@@ -6,6 +6,9 @@ import Header from './components/Header';
 import SummonerSplash from "./components/SummonerSplash";
 import Table from "./components/Table";
 
+/**
+ * TODO: Create a homepage
+ */
 
 // Create a React component
 class App extends React.Component {
