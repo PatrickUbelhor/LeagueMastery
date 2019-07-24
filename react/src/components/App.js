@@ -36,7 +36,7 @@ class App extends React.Component {
 
 	render() {
 
-		if (this.state.summoner) {
+		if (this.state.summoner === null) {
 			return (
 				<div>
 					<Header/>
