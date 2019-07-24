@@ -20,8 +20,8 @@ class App extends React.Component {
 		};
 	}
 
-	getSummoner = async () => {
-		const summoner = (await riot.get("/summoner/by-name/VictoryLeech")).data;
+	onSearchSubmit = async (name) => {
+		const summoner = (await riot.get(`/summoner/by-name/${name}`)).data;
 		let masteries = (await riot.get(`/mastery/by-summoner/${summoner.id}`)).data;
 
 		this.setState((state, props) => {
@@ -35,20 +35,18 @@ class App extends React.Component {
 	};
 
 	render() {
-
 		if (this.state.summoner === null) {
 			return (
 				<div>
-					<Header/>
+					<Header onSubmit={this.onSearchSubmit}/>
 					<Homepage/>
-					<button onClick={this.getSummoner}>Load</button>
 				</div>
 			)
 		}
 
 		return (
 			<div>
-				<Header/>
+				<Header onSubmit={this.onSearchSubmit}/>
 				<SummonerSplash summoner={this.state.summoner} region={this.state.region} />
 				<Table masteries={this.state.masteries} />
 			</div>

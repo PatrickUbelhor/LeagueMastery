@@ -1,10 +1,12 @@
 .container {
+	display: flex;
+	width: 100%;
 	height: 3em;
 	background-color: cadetblue;
 	padding-left: 1em;
-	padding-right: 3em;
+	padding-right: 2em;
 	margin-bottom: 1em;
-	align-items: center;
+	box-sizing: border-box;
 }
 
 .container .title {
@@ -13,9 +15,14 @@
 	font-size: 1.6em;
 }
 
+.container .searchDiv {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+}
+
 .container .searchBox {
 	width: 20em;
-	float: right;
 	border-radius: 0.5em;
 	padding: 0.25em 0.4em;
 }
