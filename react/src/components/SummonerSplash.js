@@ -1,7 +1,7 @@
 import '../css/SummonerSplash.css';
 import React from 'react';
 
-const SummonerSplash = function(props) {
+function SummonerSplash(props) {
 
 	return (
 		<div className="summoner">
@@ -15,6 +15,6 @@ const SummonerSplash = function(props) {
 			</div>
 		</div>
 	);
-};
+}
 
 export default SummonerSplash;

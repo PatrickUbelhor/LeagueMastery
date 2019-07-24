@@ -1,7 +1,7 @@
 import '../css/MasteryListing.css'
 import React from 'react';
 
-const MasteryListing = function(props) {
+function MasteryListing(props) {
 
 	return (
 		<div className="champ-item">
@@ -13,6 +13,6 @@ const MasteryListing = function(props) {
 			</div>
 		</div>
 	);
-};
+}
 
 export default MasteryListing;
