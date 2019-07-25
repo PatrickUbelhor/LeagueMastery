@@ -8,7 +8,7 @@ class Header extends React.Component {
 
 		this.state = {
 			term: ''
-		}
+		};
 	}
 
 	onFormSubmit = (event) => {

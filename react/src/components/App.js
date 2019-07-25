@@ -2,8 +2,7 @@ import React from "react";
 import riot from "../api/Riot";
 import Header from "./Header";
 import Homepage from "./Homepage";
-import SummonerSplash from "./SummonerSplash";
-import Table from "./Table";
+import SummonerPage from "./SummonerPage";
 
 class App extends React.Component {
 
@@ -16,7 +15,7 @@ class App extends React.Component {
 		this.state = {
 			region: "NA",
 			summoner: null,
-			masteries: [],
+			masteries: []
 		};
 	}
 
@@ -27,7 +26,7 @@ class App extends React.Component {
 		this.setState((state, props) => {
 			return {
 				summoner: summoner,
-				masteries: masteries,
+				masteries: masteries
 			};
 		});
 
@@ -35,20 +34,14 @@ class App extends React.Component {
 	};
 
 	render() {
-		if (this.state.summoner === null) {
-			return (
-				<div>
-					<Header onSubmit={this.onSearchSubmit}/>
-					<Homepage/>
-				</div>
-			)
-		}
+		const content = this.state.summoner
+			? <SummonerPage summoner={this.state.summoner} region={this.state.region} masteries={this.state.masteries}/>
+			: <Homepage/>;
 
 		return (
 			<div>
 				<Header onSubmit={this.onSearchSubmit}/>
-				<SummonerSplash summoner={this.state.summoner} region={this.state.region} />
-				<Table masteries={this.state.masteries} />
+				{content}
 			</div>
 		);
 	}

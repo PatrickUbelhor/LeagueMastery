@@ -1,11 +1,11 @@
 import React from 'react';
 import MasteryListing from "./MasteryListing";
-import '../css/Table.css'
+import '../css/Table.css';
 
 function Table(props) {
 
 	const entries = props.masteries.map((mastery) => {
-		return <MasteryListing key={mastery.id} iconUrl={mastery.iconUrl} champion={mastery.name} level={mastery.level} points={mastery.points} />
+		return <MasteryListing key={mastery.id} iconUrl={mastery.iconUrl} champion={mastery.name} level={mastery.level} points={mastery.points}/>;
 	});
 
 	return (
