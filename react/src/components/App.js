@@ -1,8 +1,8 @@
-import React from "react";
-import riot from "../api/Riot";
-import Header from "./Header";
-import Homepage from "./Homepage";
-import SummonerPage from "./SummonerPage";
+import React from 'react';
+import riot from '../api/Riot';
+import Header from './Header';
+import Homepage from './Homepage';
+import SummonerPage from './SummonerPage';
 
 class App extends React.Component {
 
@@ -19,6 +19,7 @@ class App extends React.Component {
 		};
 	}
 
+	// TODO: Render the summoner when the info is available. Then async call to update masteries. Display load animation.
 	onSearchSubmit = async (name) => {
 		const summoner = (await riot.get(`/summoner/by-name/${name}`)).data;
 		let masteries = (await riot.get(`/mastery/by-summoner/${summoner.id}`)).data;

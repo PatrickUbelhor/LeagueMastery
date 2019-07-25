@@ -1,10 +1,11 @@
+import '../css/SummonerPage.css';
 import React from 'react';
 import SummonerSplash from './SummonerSplash';
 import Table from './Table';
 
 const SummonerPage = (props) => {
 	return (
-		<div>
+		<div className="myDiv">
 			<SummonerSplash summoner={props.summoner} region={props.region}/>
 			<Table masteries={props.masteries}/>
 		</div>
