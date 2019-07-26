@@ -5,13 +5,17 @@ import '../css/Table.css';
 function Table(props) {
 
 	const entries = props.masteries.map((mastery) => {
-		return <MasteryListing key={mastery.id} iconUrl={mastery.iconUrl} champion={mastery.name} level={mastery.level} points={mastery.points}/>;
+		return <MasteryListing key={mastery.id}
+		                       iconUrl={mastery.iconUrl}
+		                       champion={mastery.name}
+		                       level={mastery.level}
+		                       points={mastery.points} />;
 	});
 
 	return (
 		<div className="parent">
 			<h1>Champions:</h1>
-			{entries}
+			<div className="list">{entries}</div>
 		</div>
 	);
 }

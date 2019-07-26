@@ -1,3 +1,4 @@
+import '../css/Homepage.css';
 import React from 'react';
 
 function Homepage() {

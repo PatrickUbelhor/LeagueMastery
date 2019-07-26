@@ -1,3 +1,7 @@
 .parent {
     margin-left: 5%;
 }
+
+.parent .list {
+    margin-left: 5%;
+}
