@@ -39,8 +39,6 @@ dependencies {
 task copyReact(type: Copy) {
     from 'react/build'
     into 'build/resources/main/static/.'
-
-    delete file('react/build')
 }
 
 task appNpmInstall(type: NpmTask) {
