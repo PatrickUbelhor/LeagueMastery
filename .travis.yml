@@ -1,7 +1,10 @@
 language: java
 jdk: openjdk12
 os: linux
-dist: trusty
+dist: bionic
+
+before_install:
+  - chmod +x gradlew
 
 # Enable Gradle cache and wrapper
 before_cache:
