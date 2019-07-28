@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "api/hello", produces = MediaType.TEXT_PLAIN_VALUE)
 public class HelloWorldController {
 	
-	@GetMapping(value = "/")
+	@GetMapping(value = "")
 	public ResponseEntity<String> hello() {
 		return ResponseEntity.ok("Hello world");
 	}

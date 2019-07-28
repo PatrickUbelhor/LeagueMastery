@@ -3,25 +3,19 @@
 # IDEA
 /.idea
 
-# Images
-/react/public/champ-icons/*.png
-
 # Server
-/server/.gradle
-/server/build
+.gradle/
+build/
 application.yaml
 
 # React dependencies
-/react/node_modules
+node_modules/
 package-lock.json
 /.pnp
 .pnp.js
 
 # testing
 /coverage
-
-# production
-/build
 
 # misc
 .DS_Store
