@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/PatrickUbelhor/LeagueMastery.svg?branch=master)](https://travis-ci.com/PatrickUbelhor/LeagueMastery)
+
 # League Mastery
 A web app for League of Legends that gives players statistics
 about their mastery points on each champion.
