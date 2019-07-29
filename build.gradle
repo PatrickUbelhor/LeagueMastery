@@ -7,7 +7,7 @@ buildscript {
     }
     dependencies {
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.1.6.RELEASE'
-        classpath "com.moowork.gradle:gradle-node-plugin:1.2.0"
+        classpath 'com.moowork.gradle:gradle-node-plugin:1.2.0'
     }
 }
 
@@ -28,7 +28,7 @@ repositories {
 
 dependencies {
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
     compileOnly 'org.projectlombok:lombok:1.18.8'
     annotationProcessor 'org.projectlombok:lombok:1.18.8'

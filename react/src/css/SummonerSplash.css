@@ -23,7 +23,7 @@
 
 .summoner .side-info .region {
     background-color: cadetblue;
-    border-radius: 4px;
+    border-radius: 0.25em;
     margin-left: 0.75em;
     padding: 0.1em 0.25em;
 }
