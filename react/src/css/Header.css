@@ -1,28 +1,30 @@
-.container {
-	display: flex;
-	width: 100%;
-	height: 3em;
+/*.container {
 	background-color: cadetblue;
-	padding-left: 1em;
-	padding-right: 2em;
+}*/
+
+#appBar {
 	margin-bottom: 1em;
-	box-sizing: border-box;
 }
 
-.container .title {
-	margin: auto 0;
-	height: auto;
-	font-size: 1.6em;
-}
-
-.container .searchDiv {
+.searchRoot {
 	margin-left: auto;
+	padding: 0.1em 0.25em;
 	display: flex;
 	align-items: center;
+	width: 25em;
 }
 
-.container .searchBox {
-	width: 20em;
-	border-radius: 0.5em;
-	padding: 0.25em 0.4em;
+.searchInput {
+	margin-left: 0.5em;
+	flex: 1;
+}
+
+.searchIconButton {
+	padding: 0.75em;
+}
+
+.searchDivider {
+	width: 0.25em;
+	height: 10em;
+	margin: 0.25em;
 }
