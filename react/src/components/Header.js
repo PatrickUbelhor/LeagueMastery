@@ -1,7 +1,6 @@
 import '../css/Header.css';
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
 import Paper from '@material-ui/core/Paper';
@@ -10,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
+/**
+ * TODO: Use Material form-control instead of normal form?
+ */
 class Header extends React.Component {
 
 	constructor(props) {
@@ -27,30 +29,29 @@ class Header extends React.Component {
 
 	render() {
 		const searchbar = (
-			<Paper className="searchRoot">
-				<IconButton className="searchIconButton" aria-label="menu">
-					<MenuIcon/>
-				</IconButton>
-				<Divider className="searchDivider" />
-				<InputBase
-					className="searchInput"
-					placeholder="Search..."
-					value={this.state.term}
-					onChange={(event) => this.setState({ term: event.target.value })}
-					inputProps={{ 'aria-label': 'Search' }}
-				/>
-				<IconButton className="searchIconButton" aria-label="search">
-					<SearchIcon/>
-				</IconButton>
-			</Paper>
+			<form className="searchForm" onSubmit={this.onFormSubmit}>
+				<Paper className="searchPaper">
+					<IconButton className="searchIconButton" aria-label="menu">
+						<MenuIcon/>
+					</IconButton>
+					<InputBase
+						className="searchInput"
+						placeholder="Search..."
+						value={this.state.term}
+						onChange={(event) => this.setState({ term: event.target.value })}
+						inputProps={{ 'aria-label': 'Search' }}
+					/>
+					<IconButton className="searchIconButton" onClick={this.onFormSubmit} aria-label="search">
+						<SearchIcon />
+					</IconButton>
+				</Paper>
+			</form>
 		);
 
 		return (
 			<AppBar id="appBar" position="static">
 				<Toolbar>
 					<Typography variant="h6" color="inherit">League Mastery</Typography>
-					{/*<form onSubmit={this.onFormSubmit}>*/}
-					{/*</form>*/}
 					{searchbar}
 				</Toolbar>
 			</AppBar>

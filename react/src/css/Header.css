@@ -6,8 +6,11 @@
 	margin-bottom: 1em;
 }
 
-.searchRoot {
+.searchForm {
 	margin-left: auto;
+}
+
+.searchPaper {
 	padding: 0.1em 0.25em;
 	display: flex;
 	align-items: center;
