@@ -14,11 +14,14 @@ import java.net.URISyntaxException;
 @Service
 public class MasteryService {
 	
-	@Autowired
-	private Config config;
+	private final Config config;
+	private final RestTemplate restTemplate;
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	public MasteryService(Config config, RestTemplate restTemplate) {
+		this.config = config;
+		this.restTemplate = restTemplate;
+	}
 	
 	public Mastery[] getMasteries(String summonerId) throws URISyntaxException {
 		RequestEntity<Void> request = RequestEntity

@@ -16,8 +16,12 @@ import java.net.URISyntaxException;
 @RequestMapping(value = "/api/summoner", produces = MediaType.APPLICATION_JSON_VALUE)
 public class SummonerController {
 	
+	private final SummonerService summonerService;
+	
 	@Autowired
-	private SummonerService summonerService;
+	public SummonerController(SummonerService summonerService) {
+		this.summonerService = summonerService;
+	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/by-name/{name}")

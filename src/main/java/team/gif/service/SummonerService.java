@@ -14,11 +14,14 @@ import java.net.URISyntaxException;
 @Service
 public class SummonerService {
 	
-	@Autowired
-	private Config config;
+	private final Config config;
+	private final RestTemplate restTemplate;
 	
 	@Autowired
-	private RestTemplate restTemplate;
+	public SummonerService(Config config, RestTemplate restTemplate) {
+		this.config = config;
+		this.restTemplate = restTemplate;
+	}
 	
 	public ResponseEntity<String> getSummonerByName(String name) throws URISyntaxException {
 		RequestEntity<Void> request = RequestEntity
