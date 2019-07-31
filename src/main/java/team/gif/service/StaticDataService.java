@@ -1,5 +1,7 @@
 package team.gif.service;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
@@ -15,6 +17,7 @@ import java.net.URISyntaxException;
 @Service
 public class StaticDataService {
 	
+	private static final Logger logger = LogManager.getLogger(StaticDataService.class);
 	private final RestTemplate restTemplate;
 	private final CacheManager cacheManager;
 	
@@ -26,7 +29,8 @@ public class StaticDataService {
 	
 	@Cacheable("latestVersion")
 	public String getLatestVersionNumber() throws URISyntaxException {
-		System.out.println("Not using cached version number");
+		logger.info("Retrieving and caching latest version number");
+		
 		String url = "http://ddragon.leagueoflegends.com/api/versions.json";
 		
 		// TODO: error forwarding
@@ -37,7 +41,8 @@ public class StaticDataService {
 	
 	@Cacheable("championList")
 	public ParsedChampionList getChampionList() throws URISyntaxException {
-		System.out.println("Not using cached championList");
+		logger.info("Retrieving and caching new ParsedChampionList");
+		
 		String version = getLatestVersionNumber();
 		String url = "http://ddragon.leagueoflegends.com/cdn/" + version + "/data/en_US/champion.json";
 		
@@ -50,8 +55,7 @@ public class StaticDataService {
 	// TODO: turn this into a cron job that runs on Tuesdays?
 	@Scheduled(fixedRate = 60000)
 	public void clearCache() {
-		System.out.println("Clearing cache");
-		
+		logger.info("Clearing cache");
 		cacheManager.getCacheNames()
 				.forEach(cacheName -> cacheManager.getCache(cacheName).clear());
 	}
