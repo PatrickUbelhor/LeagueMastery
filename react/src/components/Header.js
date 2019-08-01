@@ -1,12 +1,14 @@
 import '../css/Header.css';
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
+import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputBase from '@material-ui/core/InputBase';
+import MenuItem from '@material-ui/core/MenuItem';
 import Paper from '@material-ui/core/Paper';
+import Select from '@material-ui/core/Select';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 
 /**
@@ -18,6 +20,7 @@ class Header extends React.Component {
 		super(props);
 
 		this.state = {
+			region: 'NA',
 			term: ''
 		};
 	}
@@ -31,9 +34,15 @@ class Header extends React.Component {
 		const searchbar = (
 			<form className="searchForm" onSubmit={this.onFormSubmit}>
 				<Paper className="searchPaper">
-					<IconButton className="searchIconButton" aria-label="menu">
-						<MenuIcon/>
-					</IconButton>
+					<FormControl variant="outlined" component="div">
+						<Select native={false}
+								className="regionSelect" value={this.state.region}
+								onChange={(event) => this.setState({ region: event.target.value })}>
+							<MenuItem value="NA" component="li">NA</MenuItem>
+							<MenuItem value="EU" component="li">EU</MenuItem>
+							<MenuItem value="KR" component="li">KR</MenuItem>
+						</Select>
+					</FormControl>
 					<InputBase
 						className="searchInput"
 						placeholder="Search..."

@@ -17,6 +17,10 @@
 	width: 25em;
 }
 
+.regionSelect {
+	width: 4em;
+}
+
 .searchInput {
 	margin-left: 0.5em;
 	flex: 1;
@@ -24,10 +28,4 @@
 
 .searchIconButton {
 	padding: 0.75em;
-}
-
-.searchDivider {
-	width: 0.25em;
-	height: 10em;
-	margin: 0.25em;
 }
