@@ -1,8 +1,12 @@
 package team.gif.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,13 +27,31 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/api/mastery", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MasteryController {
 	
+	private static final Logger logger = LogManager.getLogger(MasteryController.class);
 	private final MasteryService masteryService;
 	private final StaticDataService staticDataService;
+	private final CacheManager cacheManager;
 	
 	@Autowired
-	public MasteryController(MasteryService masteryService, StaticDataService staticDataService) {
+	public MasteryController(MasteryService masteryService, StaticDataService staticDataService, CacheManager cacheManager) {
 		this.masteryService = masteryService;
 		this.staticDataService = staticDataService;
+		this.cacheManager = cacheManager;
+	}
+	
+	// TODO: turn this into a cron job that runs on Tuesdays?
+	@Scheduled(fixedDelayString = "${cache.reset.timer}")
+	public void resetCache() {
+		logger.info("Clearing cache");
+		cacheManager.getCacheNames()
+				.forEach(cacheName -> cacheManager.getCache(cacheName).clear());
+		
+		try {
+			String latestVersion = staticDataService.getLatestVersionNumber();
+			staticDataService.getChampionList(latestVersion);
+		} catch (URISyntaxException e) {
+			logger.error("Bad URL", e);
+		}
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
@@ -38,7 +60,7 @@ public class MasteryController {
 		Mastery[] masteries = masteryService.getMasteries(summonerId);
 		String version = staticDataService.getLatestVersionNumber();
 		
-		ParsedChampionList champions = staticDataService.getChampionList();
+		ParsedChampionList champions = staticDataService.getChampionList(version);
 		
 		List<MasteryListing> result;
 		result = Arrays.stream(masteries).parallel()

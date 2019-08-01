@@ -3,9 +3,7 @@ package team.gif.service;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import team.gif.model.ParsedChampionList;
@@ -19,12 +17,10 @@ public class StaticDataService {
 	
 	private static final Logger logger = LogManager.getLogger(StaticDataService.class);
 	private final RestTemplate restTemplate;
-	private final CacheManager cacheManager;
 	
 	@Autowired
-	public StaticDataService(RestTemplate restTemplate, CacheManager cacheManager) {
+	public StaticDataService(RestTemplate restTemplate) {
 		this.restTemplate = restTemplate;
-		this.cacheManager = cacheManager;
 	}
 	
 	@Cacheable("latestVersion")
@@ -40,24 +36,15 @@ public class StaticDataService {
 	}
 	
 	@Cacheable("championList")
-	public ParsedChampionList getChampionList() throws URISyntaxException {
+	public ParsedChampionList getChampionList(String version) throws URISyntaxException {
 		logger.info("Retrieving and caching new ParsedChampionList");
 		
-		String version = getLatestVersionNumber();
 		String url = "http://ddragon.leagueoflegends.com/cdn/" + version + "/data/en_US/champion.json";
 		
 		// TODO: error forwarding
 		ChampionList rawList = restTemplate.getForObject(new URI(url), ChampionList.class);
 		
 		return new ParsedChampionList(rawList);
-	}
-	
-	// TODO: turn this into a cron job that runs on Tuesdays?
-	@Scheduled(fixedRate = 60000)
-	public void clearCache() {
-		logger.info("Clearing cache");
-		cacheManager.getCacheNames()
-				.forEach(cacheName -> cacheManager.getCache(cacheName).clear());
 	}
 	
 	

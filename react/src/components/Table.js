@@ -1,6 +1,6 @@
+import '../css/Table.css';
 import React from 'react';
 import MasteryListing from "./MasteryListing";
-import '../css/Table.css';
 
 function Table(props) {
 
