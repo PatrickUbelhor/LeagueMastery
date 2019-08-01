@@ -1,31 +1,37 @@
 .summoner {
-    position: relative;
-    /*border: silver solid 0.25em;*/
+    display: flex;
+    flex-direction: row;
 }
 
 .summoner img {
-    vertical-align: middle;
     height: 10em;
 }
 
 .summoner .side-info {
-    position: absolute;
     height: 100%;
     width: 100%;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     padding-top: 0.5em;
     padding-left: 1.5em;
 }
 
-.summoner .side-info .name {
+.summoner .side-info .row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.summoner .side-info .row .name {
     font-size: 2em;
 }
 
-.summoner .side-info .region {
+.summoner .side-info .row .region {
     background-color: cadetblue;
     border-radius: 0.25em;
     margin-left: 0.75em;
     padding: 0.1em 0.25em;
+    height: fit-content;
 }
 
 .summoner .side-info .level {

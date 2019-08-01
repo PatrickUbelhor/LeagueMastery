@@ -1,10 +1,11 @@
 import '../css/Homepage.css';
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
 function Homepage() {
 	return (
 		<div>
-			<h1 id="text">Search for a summoner</h1>
+			<Typography id="text" variant="h4">Search for a summoner</Typography>
 		</div>
 	);
 }
