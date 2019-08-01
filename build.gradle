@@ -62,7 +62,7 @@ copyReact.dependsOn appNpmBuild
 compileJava.dependsOn copyReact
 
 node {
-    version = '12.6.0'
+    version = '10.6.0'
     npmVersion = '6.10.2'
     download = false
 }
