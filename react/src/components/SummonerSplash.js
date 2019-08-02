@@ -13,7 +13,7 @@ function SummonerSplash(props) {
 				<div className="side-info">
 					<div className="row">
 						<Typography className="name">{props.summoner.name}</Typography>
-						<span className="region">{props.region}</span>
+						<Typography className="region">{props.region}</Typography>
 					</div>
 					<Typography className="level">{"Level " + props.summoner.summonerLevel}</Typography>
 				</div>

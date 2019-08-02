@@ -1,7 +1,4 @@
-.parent {
-    margin-left: 5%;
-}
-
-.parent .list {
-    margin-left: 5%;
+.masteryTable {
+    padding-left: 5%;
+    padding-right: 5%;
 }

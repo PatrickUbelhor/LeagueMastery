@@ -10,6 +10,7 @@ import Select from '@material-ui/core/Select';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 /**
  * TODO: Use Material form-control instead of normal form?
@@ -37,7 +38,8 @@ class Header extends React.Component {
 					<FormControl variant="outlined" component="div">
 						<Select native={false}
 								className="regionSelect" value={this.state.region}
-								onChange={(event) => this.setState({ region: event.target.value })}>
+								onChange={(event) => this.setState({ region: event.target.value })}
+								input={<OutlinedInput labelWidth={0}/>}>
 							<MenuItem value="NA" component="li">NA</MenuItem>
 							<MenuItem value="EU" component="li">EU</MenuItem>
 							<MenuItem value="KR" component="li">KR</MenuItem>
