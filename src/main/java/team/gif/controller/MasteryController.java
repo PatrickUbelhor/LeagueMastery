@@ -46,12 +46,8 @@ public class MasteryController {
 		cacheManager.getCacheNames()
 				.forEach(cacheName -> cacheManager.getCache(cacheName).clear());
 		
-		try {
-			String latestVersion = staticDataService.getLatestVersionNumber();
-			staticDataService.getChampionList(latestVersion);
-		} catch (URISyntaxException e) {
-			logger.error("Bad URL", e);
-		}
+		String latestVersion = staticDataService.getLatestVersionNumber();
+		staticDataService.getChampionList(latestVersion);
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")

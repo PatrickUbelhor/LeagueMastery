@@ -16,7 +16,7 @@ function SummonerSplash(props) {
 						<Typography className="name">{props.summoner.name}</Typography>
 						<Chip className="region" color="primary" label={props.region} />
 					</div>
-					<Typography className="level">{"Level " + props.summoner.summonerLevel}</Typography>
+					<Typography className="level">{"Level " + props.summoner.level}</Typography>
 				</div>
 			</CardContent>
 		</Card>

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import team.gif.model.ParsedSummoner;
 import team.gif.service.SummonerService;
 
 import java.net.URISyntaxException;
@@ -25,8 +26,8 @@ public class SummonerController {
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/by-name/{name}")
-	ResponseEntity<String> getSummonerByName(@PathVariable String name) throws URISyntaxException {
-		return summonerService.getSummonerByName(name);
+	ResponseEntity<ParsedSummoner> getSummonerByName(@PathVariable String name) throws URISyntaxException {
+		return ResponseEntity.ok(summonerService.getSummonerByName(name));
 	}
 	
 }
