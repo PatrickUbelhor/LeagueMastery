@@ -27,11 +27,7 @@
 }
 
 .summoner .side-info .row .region {
-    background-color: cadetblue;
-    border-radius: 0.25em;
     margin-left: 0.75em;
-    padding: 0.1em 0.25em;
-    height: fit-content;
 }
 
 .summoner .side-info .level {
