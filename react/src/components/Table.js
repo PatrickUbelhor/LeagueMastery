@@ -15,7 +15,7 @@ function Table(props) {
 
 	return (
 		<div className="masteryTable">
-			<Typography variant="h1">Champions:</Typography>
+			<Typography id="title" variant="h3">Champions:</Typography>
 			<div className="list">{entries}</div>
 		</div>
 	);

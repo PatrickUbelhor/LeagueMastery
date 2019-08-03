@@ -5,7 +5,7 @@ import Typography from '@material-ui/core/Typography';
 function Homepage() {
 	return (
 		<div>
-			<Typography id="text" variant="h4">Search for a summoner</Typography>
+			<Typography id="text" variant="h4">Search for a Summoner</Typography>
 			<div id="disclaimer">
 				<Typography id="disclaimerText" variant="caption">
 					League Mastery isn’t endorsed by Riot Games and doesn’t reflect the views or opinions of
