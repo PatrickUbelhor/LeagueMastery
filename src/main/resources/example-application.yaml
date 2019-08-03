@@ -1,4 +1,4 @@
-server.port: 3001
+server.port: 80
 
 riot.api.token: lol
 cache.reset.timer: 3600000

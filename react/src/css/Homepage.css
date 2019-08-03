@@ -4,5 +4,9 @@
 }
 
 #disclaimer {
-	margin-top: 10em;
+	width: fit-content;
+	position: fixed;
+	bottom: 1%;
+	padding-left: 5%;
+	padding-right: 5%;
 }
