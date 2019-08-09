@@ -35,6 +35,16 @@ class App extends React.Component {
 		console.log(summoner);
 	};
 
+	onTitleClick = () => {
+		// Alternatively, could move content into this.state, and change the content directly
+		this.setState((state, props) => {
+			return {
+				summoner: null,
+				masteries: []
+			}
+		});
+	};
+
 	render() {
 		const content = this.state.summoner
 			? <SummonerPage summoner={this.state.summoner} region={this.state.region} masteries={this.state.masteries}/>
@@ -42,7 +52,7 @@ class App extends React.Component {
 
 		return (
 			<div>
-				<Header onSubmit={this.onSearchSubmit}/>
+				<Header onTitleClick={this.onTitleClick} onSubmit={this.onSearchSubmit}/>
 				{content}
 			</div>
 		);

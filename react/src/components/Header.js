@@ -27,6 +27,10 @@ class Header extends React.Component {
 		this.props.onSubmit(this.state.term, this.state.region);
 	};
 
+	onTitleClick = (event) => {
+		this.props.onTitleClick();
+	};
+
 	render() {
 		const dropdown = (
 			<Select native={false}
@@ -49,28 +53,25 @@ class Header extends React.Component {
 		);
 
 		const searchbar = (
-			<form className="searchForm" onSubmit={this.onFormSubmit}>
-				<Paper className="searchPaper">
-					{/*<IconButton className="searchIconButton" onClick={this.onFormSubmit} aria-label="search">*/}
-					{/*	<SearchIcon />*/}
-					{/*</IconButton>*/}
-					<InputBase
-						className="searchInput"
-						placeholder="Search..."
-						value={this.state.term}
-						onChange={(event) => this.setState({ term: event.target.value })}
-						inputProps={{ 'aria-label': 'Search' }}
-					/>
-					{dropdown}
-				</Paper>
-			</form>
+			<Paper className="searchPaper">
+				<InputBase
+					className="searchInput"
+					placeholder="Search..."
+					value={this.state.term}
+					onChange={(event) => this.setState({ term: event.target.value })}
+					inputProps={{ 'aria-label': 'Search' }}
+				/>
+				{dropdown}
+			</Paper>
 		);
 
 		return (
 			<AppBar id="appBar" position="static">
 				<Toolbar>
-					<Typography variant="h6" color="inherit">League Mastery</Typography>
-					{searchbar}
+					<Typography variant="h6" color="inherit" onClick={this.onTitleClick}>League Mastery</Typography>
+					<form className="searchForm" onSubmit={this.onFormSubmit}>
+						{searchbar}
+					</form>
 				</Toolbar>
 			</AppBar>
 		);
