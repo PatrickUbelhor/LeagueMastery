@@ -20,12 +20,13 @@ class App extends React.Component {
 	}
 
 	// TODO: Render the summoner when the info is available. Then async call to update masteries. Display load animation.
-	onSearchSubmit = async (name) => {
-		const summoner = (await riot.get(`/summoner/by-name/${name}`)).data;
-		let masteries = (await riot.get(`/mastery/by-summoner/${summoner.id}`)).data;
+	onSearchSubmit = async (name, region) => {
+		const summoner = (await riot.get(`/summoner/by-name/${name}/${region}`)).data;
+		let masteries = (await riot.get(`/mastery/by-summoner/${summoner.id}/${region}`)).data;
 
 		this.setState((state, props) => {
 			return {
+				region: region,
 				summoner: summoner,
 				masteries: masteries
 			};

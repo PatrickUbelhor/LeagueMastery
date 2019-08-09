@@ -24,9 +24,9 @@ public class MasteryService {
 		this.restTemplate = restTemplate;
 	}
 	
-	public Mastery[] getMasteries(String summonerId) throws URISyntaxException, RestClientException {
+	public Mastery[] getMasteries(String summonerId, String region) throws URISyntaxException, RestClientException {
 		RequestEntity<Void> request = RequestEntity
-				.get(new URI("https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" + summonerId))
+				.get(new URI("https://" + region + ".api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/" + summonerId))
 				.accept(MediaType.APPLICATION_JSON)
 				.header("X-Riot-Token", config.getToken())
 				.build();

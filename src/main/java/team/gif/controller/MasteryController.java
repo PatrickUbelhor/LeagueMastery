@@ -51,9 +51,10 @@ public class MasteryController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("/by-summoner/{summonerId}")
-	public ResponseEntity<List<MasteryListing>> getMasteriesBySummoner(@PathVariable String summonerId) throws URISyntaxException {
-		Mastery[] masteries = masteryService.getMasteries(summonerId);
+	@GetMapping("/by-summoner/{summonerId}/{region}")
+	public ResponseEntity<List<MasteryListing>> getMasteriesBySummoner(@PathVariable String summonerId, @PathVariable String region) throws URISyntaxException {
+		// TODO: Throw special exception if not a valid region
+		Mastery[] masteries = masteryService.getMasteries(summonerId, region);
 		String version = staticDataService.getLatestVersionNumber();
 		
 		ParsedChampionList champions = staticDataService.getChampionList(version);

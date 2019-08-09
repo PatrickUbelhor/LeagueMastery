@@ -26,9 +26,9 @@ public class SummonerService {
 		this.restTemplate = restTemplate;
 	}
 	
-	public ParsedSummoner getSummonerByName(String name) throws URISyntaxException, RestClientException {
+	public ParsedSummoner getSummonerByName(String name, String region) throws URISyntaxException, RestClientException {
 		RequestEntity<Void> request = RequestEntity
-				.get(new URI("https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/" + name))
+				.get(new URI("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + name))
 				.accept(MediaType.APPLICATION_JSON)
 				.header("X-Riot-Token", config.getToken())
 				.build();

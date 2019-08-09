@@ -25,9 +25,10 @@ public class SummonerController {
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
-	@GetMapping("/by-name/{name}")
-	ResponseEntity<ParsedSummoner> getSummonerByName(@PathVariable String name) throws URISyntaxException {
-		return ResponseEntity.ok(summonerService.getSummonerByName(name));
+	@GetMapping("/by-name/{name}/{region}")
+	ResponseEntity<ParsedSummoner> getSummonerByName(@PathVariable String name, @PathVariable String region) throws URISyntaxException {
+		// TODO: Throw special exception if invalid region is specified
+		return ResponseEntity.ok(summonerService.getSummonerByName(name, region));
 	}
 	
 }
