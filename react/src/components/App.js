@@ -67,8 +67,6 @@ class App extends React.Component {
 	};
 
 	render() {
-		console.log('re-render');
-		console.log(this.state.message);
 		const content = this.state.summoner
 			? <SummonerPage summoner={this.state.summoner} region={this.state.region} masteries={this.state.masteries}/>
 			: <Homepage/>;

@@ -1,7 +1,9 @@
+import '../css/ErrorSnackbar.css';
 import React from 'react';
 import IconButton from '@material-ui/core/IconButton';
-import Snackbar from '@material-ui/core/Snackbar';
+import SnackbarContent from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
+import ErrorIcon from '@material-ui/icons/Error';
 
 export default class ErrorSnackbar extends React.Component {
 
@@ -24,18 +26,23 @@ export default class ErrorSnackbar extends React.Component {
 	render() {
 		return (
 			<div>
-				<Snackbar
+				<SnackbarContent
 					anchorOrigin={{
-						vertical: 'bottom',
-						horizontal: 'left',
+						vertical: 'top',
+						horizontal: 'center',
 					}}
 					open={this.props.message !== null}
 					autoHideDuration={4000}
 					onClose={this.handleClose}
 					ContentProps={{
-						'aria-describedby': 'message-id',
+						'aria-describedby': 'message',
 					}}
-					message={<span id="message-id">{this.props.message}</span>}
+					message={
+						<span id="message">
+							<ErrorIcon id="errorIcon" />
+							{this.props.message}
+						</span>
+					}
 					action={
 						<IconButton
 							key="close"
