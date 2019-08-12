@@ -24,7 +24,8 @@ class Header extends React.Component {
 
 	onFormSubmit = (event) => {
 		event.preventDefault();
-		this.props.onSubmit(this.state.term, this.state.region);
+		let strippedTerm = this.state.term.replace(/\s+/g, '');
+		this.props.onSubmit(strippedTerm, this.state.region);
 	};
 
 	onTitleClick = (event) => {
