@@ -1,5 +1,6 @@
 import React from 'react';
 import riot from '../api/Riot';
+import ErrorSnackbar from './ErrorSnackbar';
 import Header from './Header';
 import Homepage from './Homepage';
 import SummonerPage from './SummonerPage';
@@ -15,14 +16,26 @@ class App extends React.Component {
 		this.state = {
 			region: "NA",
 			summoner: null,
-			masteries: []
+			masteries: [],
+			message: null
 		};
 	}
 
 	// TODO: Render the summoner when the info is available. Then async call to update masteries. Display load animation.
 	onSearchSubmit = async (name, region) => {
-		const summoner = (await riot.get(`/summoner/by-name/${name}/${region}`)).data;
-		let masteries = (await riot.get(`/mastery/by-summoner/${summoner.id}/${region}`)).data;
+		let summoner = null;
+		try {
+			const summonerReq = await riot.get(`/summoner/by-name/${name}/${region}`);
+			summoner = summonerReq.data;
+		} catch (error) {
+			console.log(error);
+			this.setSnackbar('Failure!');
+			return;
+		}
+
+		const masteriesReq = (await riot.get(`/mastery/by-summoner/${summoner.id}/${region}`));
+		const masteries = masteriesReq.data;
+
 
 		this.setState((state, props) => {
 			return {
@@ -45,15 +58,33 @@ class App extends React.Component {
 		});
 	};
 
+	setSnackbar = (value) => {
+		this.setState((state, props) =>{
+			return {
+				message: value
+			}
+		})
+	};
+
 	render() {
+		console.log('re-render');
+		console.log(this.state.message);
 		const content = this.state.summoner
 			? <SummonerPage summoner={this.state.summoner} region={this.state.region} masteries={this.state.masteries}/>
 			: <Homepage/>;
+
+		const message = (
+			<div>
+				<ErrorSnackbar message={this.state.message} resetMessage={this.setSnackbar} />
+			</div>
+		);
+
 
 		return (
 			<div>
 				<Header onTitleClick={this.onTitleClick} onSubmit={this.onSearchSubmit}/>
 				{content}
+				{message}
 			</div>
 		);
 	}
