@@ -1,13 +1,16 @@
 package team.gif.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import team.gif.exception.SummonerNotFoundException;
 import team.gif.model.ParsedSummoner;
 import team.gif.model.riot.Summoner;
 import team.gif.service.StaticDataService;
@@ -44,6 +47,12 @@ public class SummonerController {
 		);
 		
 		return ResponseEntity.ok(result);
+	}
+	
+	
+	@ExceptionHandler
+	public ResponseEntity<String> handleSummonerNotFoundException(SummonerNotFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 	}
 	
 }

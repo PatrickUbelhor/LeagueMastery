@@ -28,8 +28,8 @@ class App extends React.Component {
 			const summonerReq = await riot.get(`/summoner/by-name/${name}/${region}`);
 			summoner = summonerReq.data;
 		} catch (error) {
-			console.log(error);
-			this.setSnackbar('Failure!');
+			console.log(error.response);
+			this.setSnackbar(error.response.data);
 			return;
 		}
 
