@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import team.gif.model.ParsedSummoner;
+import team.gif.model.riot.Summoner;
+import team.gif.service.StaticDataService;
 import team.gif.service.SummonerService;
 
 import java.net.URISyntaxException;
@@ -18,17 +20,30 @@ import java.net.URISyntaxException;
 public class SummonerController {
 	
 	private final SummonerService summonerService;
+	private final StaticDataService staticDataService;
 	
 	@Autowired
-	public SummonerController(SummonerService summonerService) {
+	public SummonerController(SummonerService summonerService, StaticDataService staticDataService) {
 		this.summonerService = summonerService;
+		this.staticDataService = staticDataService;
 	}
 	
 	@CrossOrigin(origins = "http://localhost:3000")
 	@GetMapping("/by-name/{name}/{region}")
 	ResponseEntity<ParsedSummoner> getSummonerByName(@PathVariable String name, @PathVariable String region) throws URISyntaxException {
 		// TODO: Throw special exception if invalid region is specified
-		return ResponseEntity.ok(summonerService.getSummonerByName(name, region));
+		
+		String version = staticDataService.getLatestVersionNumber();
+		Summoner rawSummoner = summonerService.getSummonerByName(name, region);
+		
+		ParsedSummoner result = new ParsedSummoner(
+				"http://ddragon.leagueoflegends.com/cdn/" + version + "/img/profileicon/" + rawSummoner.getProfileIconId() + ".png",
+				rawSummoner.getName(),
+				rawSummoner.getSummonerLevel(),
+				rawSummoner.getId()
+		);
+		
+		return ResponseEntity.ok(result);
 	}
 	
 }

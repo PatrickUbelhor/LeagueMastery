@@ -39,6 +39,7 @@ public class MasteryController {
 		this.cacheManager = cacheManager;
 	}
 	
+	// TODO: Move this to a dedicated 'scheduler' bean, since this cache is required by more than just this class
 	// TODO: turn this into a cron job that runs on Tuesdays?
 	@Scheduled(fixedDelayString = "${cache.reset.timer}")
 	public void resetCache() {

@@ -10,7 +10,7 @@ function SummonerSplash(props) {
 	return (
 		<Card>
 			<CardContent className="summoner">
-				<img src={`http://ddragon.leagueoflegends.com/cdn/9.13.1/img/profileicon/${props.summoner.profileIconId}.png`} alt="SummonerIcon"/>
+				<img src={props.summoner.profileIconUrl} alt="SummonerIcon"/>
 				<div className="side-info">
 					<div className="row">
 						<Typography className="name">{props.summoner.name}</Typography>

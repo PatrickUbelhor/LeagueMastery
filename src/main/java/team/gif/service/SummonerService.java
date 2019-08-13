@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import team.gif.Config;
-import team.gif.model.ParsedSummoner;
 import team.gif.model.riot.Summoner;
 
 import java.net.URI;
@@ -26,15 +25,14 @@ public class SummonerService {
 		this.restTemplate = restTemplate;
 	}
 	
-	public ParsedSummoner getSummonerByName(String name, String region) throws URISyntaxException, RestClientException {
+	public Summoner getSummonerByName(String name, String region) throws URISyntaxException, RestClientException {
 		RequestEntity<Void> request = RequestEntity
 				.get(new URI("https://" + region + ".api.riotgames.com/lol/summoner/v4/summoners/by-name/" + name))
 				.accept(MediaType.APPLICATION_JSON)
 				.header("X-Riot-Token", config.getToken())
 				.build();
 		
-		Summoner rawSummoner = Objects.requireNonNull(restTemplate.exchange(request, Summoner.class).getBody());
-		return new ParsedSummoner(rawSummoner);
+		return Objects.requireNonNull(restTemplate.exchange(request, Summoner.class).getBody());
 	}
 	
 }
