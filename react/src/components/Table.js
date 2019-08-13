@@ -1,7 +1,6 @@
 import '../css/Table.css';
 import React from 'react';
-import MasteryListing from "./MasteryListing";
-import Typography from '@material-ui/core/Typography';
+import MasteryListing from './MasteryListing';
 
 function Table(props) {
 
@@ -15,7 +14,6 @@ function Table(props) {
 
 	return (
 		<div className="masteryTable">
-			<Typography id="title" variant="h3">Champions:</Typography>
 			<div className="list">{entries}</div>
 		</div>
 	);

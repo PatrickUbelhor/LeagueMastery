@@ -8,7 +8,7 @@ import Chip from '@material-ui/core/Chip';
 function SummonerSplash(props) {
 
 	return (
-		<Card>
+		<Card id="summonerParent">
 			<CardContent className="summoner">
 				<img src={props.summoner.profileIconUrl} alt="SummonerIcon"/>
 				<div className="side-info">

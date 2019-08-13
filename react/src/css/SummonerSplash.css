@@ -1,3 +1,7 @@
+#summonerParent {
+    margin-bottom: 2.5em;
+}
+
 .summoner {
     display: flex;
     flex-direction: row;
