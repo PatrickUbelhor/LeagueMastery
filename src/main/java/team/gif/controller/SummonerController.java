@@ -51,8 +51,8 @@ public class SummonerController {
 	
 	
 	@ExceptionHandler
-	public ResponseEntity<String> handleSummonerNotFoundException(SummonerNotFoundException ex) {
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+	public ResponseEntity<SummonerNotFoundException> handleSummonerNotFoundException(SummonerNotFoundException ex) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex);
 	}
 	
 }

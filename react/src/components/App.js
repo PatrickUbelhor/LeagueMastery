@@ -28,8 +28,13 @@ class App extends React.Component {
 			const summonerReq = await riot.get(`/summoner/by-name/${name}/${region}`);
 			summoner = summonerReq.data;
 		} catch (error) {
-			console.log(error.response);
-			this.setSnackbar(error.response.data);
+			if (error.response !== undefined) {
+				console.log(error.response);
+				this.setSnackbar(error.response.data.message);
+				return;
+			}
+
+			this.setSnackbar("An unknown error has occurred");
 			return;
 		}
 
