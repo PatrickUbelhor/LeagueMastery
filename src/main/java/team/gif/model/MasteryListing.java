@@ -10,5 +10,6 @@ public class MasteryListing {
 	private final String name;
 	private final Integer level;
 	private final Long points;
+	private final String[] roles;
 	
 }

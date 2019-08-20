@@ -59,7 +59,7 @@ task appNpmBuild(type: NpmTask) {
 
 appNpmBuild.dependsOn appNpmInstall
 copyReact.dependsOn appNpmBuild
-compileJava.dependsOn copyReact
+//compileJava.dependsOn copyReact
 
 node {
     version = '10.6.0'

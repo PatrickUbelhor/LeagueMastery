@@ -9,7 +9,9 @@ function Table(props) {
 		                       iconUrl={mastery.iconUrl}
 		                       champion={mastery.name}
 		                       level={mastery.level}
-		                       points={mastery.points} />;
+		                       points={mastery.points}
+		                       roles={mastery.roles}
+		/>;
 	});
 
 	return (

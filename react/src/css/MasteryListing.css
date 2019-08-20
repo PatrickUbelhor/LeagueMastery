@@ -44,3 +44,13 @@
     font-size: 1.4em;
     margin-top: auto;
 }
+
+.championRoles {
+
+}
+
+.championRoleChip {
+    width: 25px;
+    height: 25px;
+    border-radius: 40%;
+}

@@ -10,9 +10,6 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 
-		// This is the only time we directly set this.state
-		// From now on, we use this.setState({params});
-		// Every time state gets changed, render() is called again
 		this.state = {
 			region: "NA",
 			summoner: null,

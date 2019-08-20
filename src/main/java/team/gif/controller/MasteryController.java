@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import team.gif.model.ParsedChampionList;
 import team.gif.model.MasteryListing;
+import team.gif.model.riot.Champion;
 import team.gif.model.riot.Mastery;
 import team.gif.service.MasteryService;
 import team.gif.service.StaticDataService;
@@ -62,13 +63,17 @@ public class MasteryController {
 		
 		List<MasteryListing> result;
 		result = Arrays.stream(masteries).parallel()
-				.map(mastery -> new MasteryListing(
-						mastery.getChampionId(),
-						"http://ddragon.leagueoflegends.com/cdn/" + version + "/img/champion/" + champions.getChampion(mastery.getChampionId()).getImage().getFull(),
-						champions.getChampion(mastery.getChampionId()).getName(),
-						mastery.getChampionLevel(),
-						mastery.getChampionPoints())
-				)
+				.map(mastery -> {
+					Champion champ = champions.getChampion(mastery.getChampionId());
+					return new MasteryListing(
+							mastery.getChampionId(),
+							"http://ddragon.leagueoflegends.com/cdn/" + version + "/img/champion/" + champ.getImage().getFull(),
+							champions.getChampion(mastery.getChampionId()).getName(),
+							mastery.getChampionLevel(),
+							mastery.getChampionPoints(),
+							champ.getTags()
+					);
+				})
 				.collect(Collectors.toList());
 		
 		return ResponseEntity.ok(result);
