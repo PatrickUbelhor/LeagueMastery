@@ -1,23 +1,32 @@
 import '../css/Table.css';
 import React from 'react';
 import MasteryListing from './MasteryListing';
+import Card from '@material-ui/core/Card'
+import CardContent from '@material-ui/core/CardContent';
+import Divider from '@material-ui/core/Divider';
 
 function Table(props) {
 
 	const entries = props.masteries.map((mastery) => {
-		return <MasteryListing key={mastery.id}
-		                       iconUrl={mastery.iconUrl}
-		                       champion={mastery.name}
-		                       level={mastery.level}
-		                       points={mastery.points}
-		                       roles={mastery.roles}
-		/>;
+		return (
+			<div key={mastery.id}>
+				<MasteryListing iconUrl={mastery.iconUrl}
+			                       champion={mastery.name}
+			                       level={mastery.level}
+			                       points={mastery.points}
+			                       roles={mastery.roles}
+				/>
+				<Divider light={false} />
+			</div>
+		)
 	});
 
 	return (
-		<div className="masteryTable">
-			<div className="list">{entries}</div>
-		</div>
+		<Card className="masteryTable">
+			<CardContent className="masteryTableContent">
+				{entries}
+			</CardContent>
+		</Card>
 	);
 }
 

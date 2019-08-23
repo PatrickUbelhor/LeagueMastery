@@ -1,12 +1,8 @@
-.champ-card {
-    margin-bottom: 0.5em;
-    width: 100%
-}
-
 .champ-item {
     display: flex;
     flex-direction: row;
-    padding: 0.75em 0.75em 0.75em !important;
+    margin-top: 0.75em;
+    margin-bottom: 0.75em;
 }
 
 .champ-item img {

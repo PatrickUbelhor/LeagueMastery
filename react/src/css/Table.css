@@ -1,9 +1,10 @@
 .masteryTable {
-    padding-left: 5%;
-    padding-right: 5%;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    width: max-content;
 }
 
-#title {
-    margin-top: 0.5em;
-    margin-bottom: 0.25em;
+.masteryTableContent {
+    padding-top: 0.25em !important;
+    width: max-content;
 }
