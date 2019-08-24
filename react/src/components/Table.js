@@ -22,7 +22,7 @@ function Table(props) {
 	});
 
 	return (
-		<Card className="masteryTable">
+		<Card className="masteryTable" elevation={2}>
 			<CardContent className="masteryTableContent">
 				{entries}
 			</CardContent>

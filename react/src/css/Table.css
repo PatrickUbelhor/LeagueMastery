@@ -1,10 +1,9 @@
 .masteryTable {
     margin-bottom: 1em;
     margin-left: 2em;
-    width: max-content;
+    width: 100%;
 }
 
 .masteryTableContent {
     padding-top: 0.25em !important;
-    width: max-content;
 }
