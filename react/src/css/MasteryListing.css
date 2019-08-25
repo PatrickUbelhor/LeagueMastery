@@ -13,7 +13,8 @@
 
 .champ-item .content {
     height: available;
-    width: 100%;
+    min-width: fit-content;
+    width: 13em;
     display: flex;
     flex-direction: column;
     align-content: space-between;
@@ -40,8 +41,4 @@
 .champ-item .content .points {
     font-size: 1.4em;
     margin-top: auto;
-}
-
-.championRoles {
-
 }

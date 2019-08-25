@@ -16,7 +16,7 @@ function Table(props) {
 			                       points={mastery.points}
 			                       roles={mastery.roles}
 				/>
-				<Divider light={false} />
+				{ mastery.id === props.masteries[props.masteries.length - 1].id ? null : <Divider light={false} /> }
 			</div>
 		)
 	});
