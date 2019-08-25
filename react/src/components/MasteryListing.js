@@ -7,42 +7,9 @@ import Typography from '@material-ui/core/Typography';
  */
 function MasteryListing(props) {
 
-	function getRoleChips(roles) {
-		let roleChips = [];
-		for (let role of roles) {
-
-			let color;
-			switch (role.toLowerCase()) {
-				case "marksman":
-					color = "gold";
-					break;
-				case "mage":
-					color = "blue";
-					break;
-				case "fighter":
-					color = "red";
-					break;
-				case "assassin":
-					color = "purple";
-					break;
-				case "tank":
-					color = "green";
-					break;
-				case "support":
-					color = "pink";
-					break;
-				default:
-					color = "black";
-					break;
-			}
-
-			let div = <div className="championRoleChip" key={role} style={{ backgroundColor: color}} />;
-			roleChips.push(div);
-		}
-
-		return roleChips;
-	}
-
+	/*
+	 * props.roles possibilities: { marksman, mage, fighter, assassin, tank, support }
+	 */
 	return (
 		<div className="champ-item">
 			<img src={props.iconUrl} alt="Champ Icon"/>
@@ -53,9 +20,6 @@ function MasteryListing(props) {
 				</div>
 				<Typography className="points">{Number(props.points).toLocaleString()} Points</Typography>
 			</div>
-			{/*<div className="championRoles">*/}
-			{/*	{getRoleChips(props.roles)}*/}
-			{/*</div>*/}
 		</div>
 	);
 }
