@@ -69,7 +69,7 @@ class Header extends React.Component {
 		return (
 			<AppBar id="appBar" position="static">
 				<Toolbar>
-					<Typography variant="h6" color="inherit" onClick={this.onTitleClick}>League Mastery</Typography>
+					<Typography id="home" variant="h6" color="inherit" onClick={this.onTitleClick}>League Mastery</Typography>
 					<form className="searchForm" onSubmit={this.onFormSubmit}>
 						{searchbar}
 					</form>
