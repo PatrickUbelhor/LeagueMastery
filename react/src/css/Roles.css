@@ -1,0 +1,10 @@
+.roleText {
+	font-family: Roboto, sans-serif;
+	margin-top: 0.75em;
+	margin-bottom: 0.75em;
+}
+
+.roleTableContent {
+	padding-top: 0.25em !important;
+	padding-bottom: 0.25em !important;
+}
