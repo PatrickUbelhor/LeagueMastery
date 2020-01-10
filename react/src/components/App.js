@@ -61,7 +61,7 @@ class App extends React.Component {
 	};
 
 	setSnackbar = (value) => {
-		this.setState((state, props) =>{
+		this.setState((state, props) => {
 			return {
 				message: value
 			}
